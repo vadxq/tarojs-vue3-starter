@@ -18,7 +18,7 @@ const previewPath = path.resolve(appDirectory, './preview.jpg');
 // buildTT 字节小程序
 const buildTT = () => {
   shell.exec('yarn global add @tarojs/cli')
-  shell.exec(`${argv.e === 'prod' ? 'yarn build:tt' : 'yarn test:tt'}`)
+  shell.exec(`${argv.e === 'prod' ? 'yarn build:tt' : 'yarn buildtest:tt'}`)
   shell.exec('yarn global add tt-ide-cli')
   shell.exec('ls dist/tt -la')
   shell.exec(`npx tma login-e ${argv.u} ${argv.p}`)
@@ -27,10 +27,10 @@ const buildTT = () => {
 
 // buildSwan 百度小程序
 const buildSwan = () => {
+  shell.exec('yarn global add @tarojs/cli')
+  shell.exec(`${argv.e === 'prod' ? 'yarn build:swan' : 'yarn buildtest:swan'}`)
   shell.exec('yarn global add swan-toolkit')
-  shell.exec(`${argv.e === 'prod' ? 'yarn build:tt' : 'yarn test:tt'}`)
-  shell.exec('yarn global add tt-ide-cli')
-  shell.exec('ls dist/tt -la')
+  shell.exec('ls dist/swan -la')
   shell.exec(`npx tma login-e ${argv.u} ${argv.p}`)
   shell.exec(`npx tma upload -v ${pjson.version} -c "${pjson.description}-${pjson.changelog}" ./dist/tt | cat > ${logPath}`)
 }
