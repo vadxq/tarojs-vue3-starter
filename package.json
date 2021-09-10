@@ -55,6 +55,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@tarojs/cli": "3.3.7",
     "@tarojs/mini-runner": "3.3.7",
     "@tarojs/plugin-platform-kwai": "^1.0.0",
@@ -65,15 +67,42 @@
     "@vue/compiler-sfc": "^3.0.0",
     "axios": "^0.21.4",
     "babel-preset-taro": "3.3.7",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-customizable": "^6.3.0",
     "eslint": "^6.8.0",
     "eslint-config-taro": "3.3.7",
     "eslint-plugin-vue": "^7.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "md5-file": "^5.0.0",
     "minimist": "^1.2.5",
+    "prettier": "^2.4.0",
     "qr-image": "^3.2.0",
     "shelljs": "^0.8.4",
-    "stylelint": "9.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "typescript": "^3.7.0",
     "vue-loader": "^16.0.0-beta.8"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.md": "prettier . -w",
+    "*.{ts,tsx,js,vue}": "eslint . --fix",
+    "*.{vue,css,scss,less,sass}": "stylelint --fix",
+    "*": "prettier . -w -u"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
+    }
   }
 }
