@@ -8,17 +8,24 @@
       <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
     </view>
     <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
+    <view id="lottie">
+      <canvas id="test-canvas" canvas-id="test-canvas" type="2d"/>
+    </view>
   </view>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
+import Lottie from '@/utils/lottie';
+import Taro, { pxTransform } from '@tarojs/taro'
+
 export default {
   name: 'Index',
   components: {
     
   },
   setup(){
+    const lottieRef = ref();
     const state = reactive({
       msg: '欢迎使用 NutUI3.0 开发小程序',
       msg2: '你成功了～',
@@ -34,7 +41,41 @@ export default {
       state.cover = cover;
     };
 
+    onMounted(() => {
+
+      const canvasContext: any = Taro.createCanvasContext("test-canvas");
+      //   //  请求到的lottie json数据
+      //   const animationData = require('../../assets/aaa.json')
+      //   // 请求lottie的路径。注意开启downloadFile域名并且返回格式是json
+      //   const animationPath = "https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json";
+
+      //   // 指定canvas大小
+        canvasContext.canvas = {
+          width: pxTransform(50),
+          height: pxTransform(50),
+        };
+
+      //   // 如果同时指定 animationData 和 path， 优先取 animationData
+      //   lottie.loadAnimation({
+      //     renderer: "canvas", // 只支持canvas
+      //     loop: true,
+      //     autoplay: true,
+      //     animationData: animationData,
+      //     path: animationPath,
+      //     rendererSettings: {
+      //       context: canvasContext,
+      //       clearCanvas: true,
+      //     },
+      //   });
+
+      Lottie(canvasContext, {
+        animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
+        animationData: require('../../assets/aaa.json'),
+      })
+    })
+
     return {
+      lottieRef,
       ...toRefs(state),
       handleClick
     }
@@ -43,10 +84,5 @@ export default {
 </script>
 
 <style lang="scss">
-.index {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-}
+@import './index.scss';
 </style>

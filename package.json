@@ -51,6 +51,7 @@
     "@tarojs/plugin-html": "3.3.7",
     "@tarojs/runtime": "3.3.7",
     "@tarojs/taro": "3.3.7",
+    "lottie-miniapp": "^1.9.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
