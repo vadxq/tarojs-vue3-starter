@@ -18,7 +18,7 @@
 import { onMounted, reactive, ref, toRefs } from 'vue';
 import Lottie from '@/utils/lottie';
 import Taro, { createSelectorQuery, pxTransform } from '@tarojs/taro'
-// import lottie from 'lottie-miniapp';
+import lottie from 'lottie-miniapp';
 // import lottie from 'lottie-miniprogram'
 
 export default {
@@ -54,31 +54,15 @@ export default {
             canvas.height = res[0].height * dpr;
             ctx.scale(dpr, dpr);
 
-            Lottie(ctx, {
+            const dadd = lottie(ctx, {
               animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
               animationData: require('../../assets/aaa.json'),
               canvas: canvas
             })
+
+            dadd.play()
           });
       } else {
-        // ctxCanvas= createSelectorQuery().select("#testCanvas")
-        //   .fields({ node: true, size: true })
-        //   .exec((res) => {
-        //     console.log(res);
-        //     const canvas = res[0].node;
-        //     const ctx = canvas.getContext("2d");
-
-        //     const dpr = Taro.getSystemInfoSync().pixelRatio;
-        //     canvas.width = res[0].width * dpr;
-        //     canvas.height = res[0].height * dpr;
-        //     ctx.scale(dpr, dpr);
-
-        //     Lottie(ctx, {
-        //       animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-        //       animationData: require('../../assets/aaa.json'),
-        //       canvas: canvas
-        //     })
-        //   });
         const canvasContext: any = Taro.createCanvasContext("testCanvas");
         console.log(canvasContext);
 
@@ -93,103 +77,10 @@ export default {
           animationData: require('../../assets/aaa.json'),
         })
       }
-
       console.log(ctxCanvas);
-   
-      // Lottie(lottieRef.value, {
-      //     animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //     animationData: require('../../assets/aaa.json'),
-      //   })
-      // const ctxCanvas: any = Taro.createSelectorQuery().select("#testCanvas")
-      // .fields({ node: true, size: true })
-      // .exec((res) => {
-      //   const canvas = res[0].node;
-      //   const ctx = canvas.getContext("2d");
-
-      //   const dpr = Taro.getSystemInfoSync().pixelRatio;
-      //   canvas.width = res[0].width * dpr;
-      //   canvas.height = res[0].height * dpr;
-      //   ctx.scale(dpr, dpr);
-
-      //   Lottie(ctx, {
-      //     animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //     animationData: require('../../assets/aaa.json'),
-      //     canvas: canvas
-      //   })
-      // });
-      // ctxCanvas.canvas.width = pxTransform(50)
-      //   ctxCanvas.canvas.height = pxTransform(50)
-      // Lottie(ctxCanvas, {
-      //     animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //     animationData: require('../../assets/aaa.json'),
-      //   })
-      // Taro.createSelectorQuery().selectAll('.testCanvas').node((res) => {
-      //   console.log(res);
-      //   const canvas = res[0].node;
-      //   console.log(lottieRef.value);
-      //   const ctx = canvas.getContext("2d");
-
-      //   // const dpr = Taro.getSystemInfoSync().pixelRatio;
-      //   canvas.width = pxTransform(50)
-      //   canvas.height = pxTransform(50)
-      //   Lottie(canvas, {
-      //     animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //     animationData: require('../../assets/aaa.json'),
-      //   })
-      //   // ctx.scale(dpr, dpr);
-      //   // lottie.setup(ctx)
-      //   // lottie.loadAnimation({
-      //   //   renderer: "canvas", // 只支持canvas
-      //   //   loop: true,
-      //   //   autoplay: true,
-      //   //   // animationData: require('../../assets/aaa.json'),
-      //   //   path: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //   //   rendererSettings: {
-      //   //     // 这里需要填 canvas
-      //   //     // canvas: canvas,
-      //   //     context: ctx,
-      //   //     clearCanvas: true,
-      //   //   },
-      //   // });
-      // }).exec(res => console.log('res', res));
     };
 
     onMounted(() => {
-
-      // const canvasContext: any = Taro.createCanvasContext("test-canvas");
-      //   //  请求到的lottie json数据
-      //   const animationData = require('../../assets/aaa.json')
-      //   // 请求lottie的路径。注意开启downloadFile域名并且返回格式是json
-      //   const animationPath = "https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json";
-
-      //   // 指定canvas大小
-      //   canvasContext.canvas = {
-      //     width: pxTransform(50),
-      //     height: pxTransform(50),
-      //   };
-
-      // Lottie(canvasContext, {
-      //   animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-      //   animationData: require('../../assets/aaa.json'),
-      // })
-
-      
-      // console.log(canvasContext);
-      // // const canvas = canvasContext[0].node
-      //   const context = canvasContext.getContext('2d')
-
-      //   canvasContext.width = 300
-      //   canvasContext.height = 300
-
-      //   lottie.setup(canvasContext)
-      //   lottieRef.value = lottie.loadAnimation({
-      //     loop: true,
-      //     autoplay: true,
-      //     animationData: require('../../assets/aaa.json'),
-      //     rendererSettings: {
-      //       context,
-      //     },
-      //   })
     })
 
     return {
