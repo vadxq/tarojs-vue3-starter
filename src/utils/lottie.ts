@@ -5,6 +5,7 @@ export default (canvasContext, option: {
   animationData?: any;
   loop?: Boolean;
   autoplay?: Boolean;
+  canvas?: any;
 }) => {
   const loop: boolean = option.loop = true
   const autoplay: boolean = option.autoplay = true;
@@ -15,6 +16,7 @@ export default (canvasContext, option: {
     animationData: option.animationData,
     path: option.animationPath,
     rendererSettings: {
+      // canvas: option.canvas,
       context: canvasContext,
       clearCanvas: true,
     },
