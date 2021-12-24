@@ -15,13 +15,13 @@
 </template>
 
 <script lang="ts">
-import { onMounted, reactive, ref, toRefs } from 'vue';
+import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue';
 import Lottie from '@/utils/lottie';
 import Taro, { createSelectorQuery, pxTransform } from '@tarojs/taro'
 import lottie from 'lottie-miniapp';
 // import lottie from 'lottie-miniprogram'
 
-export default {
+export default defineComponent({
   name: 'Index',
   components: {
     
@@ -89,7 +89,7 @@ export default {
       handleClick
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
