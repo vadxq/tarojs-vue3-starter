@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-// import { getUserInfo } from '~/apis/index';
-// import LayoutPage from '~/components/layout/pageLayout.vue';
+import { getUserInfo } from '~/apis/index';
 
 const msg = ref('Hello Taro');
 
@@ -11,10 +10,10 @@ const click = () => {
   show.value = true;
 };
 
-// const getInfoData = async () => {
-//   const res = await getUserInfo();
-//   console.log('获取信息', res);
-// };
+const getInfoData = async () => {
+  const res = await getUserInfo();
+  console.log('获取信息', res);
+};
 </script>
 
 <template>
@@ -26,11 +25,11 @@ const click = () => {
       <div class="text-3xl">1</div>
     </div>
     <div>
-      <!-- 演示nutui 部分组件丢失 -->
+      <!-- 演示nutui 部分组件丢失, 但是开启skyline居然有效 -->
       <nut-button type="primary"> Primary </nut-button>
       <nut-button type="info"> Info </nut-button>
     </div>
     <nut-divider dashed> 跳转 </nut-divider>
-    <!-- <button @click="getInfoData"> 获取 </button> -->
+    <button @click="getInfoData">获取</button>
   </layout-page>
 </template>
