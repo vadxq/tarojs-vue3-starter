@@ -2,5 +2,10 @@
 
 ## 技术选型
 
-- Tarojs
+- Tarojs4
+- Vite
 - Vue3
+- Pinia
+- TypeScript
+- TailwindCSS
+- NutUI

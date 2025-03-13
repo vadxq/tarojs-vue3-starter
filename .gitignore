@@ -4,5 +4,13 @@ deploy_versions/
 .rn_temp/
 node_modules/
 .DS_Store
-out.log
-preview.jpg
+.swc
+*.local
+
+pnpm-lock.yaml
+bun.lock
+yarn.lock
+package-lock.json
+
+project.private.config.json
+*.bk

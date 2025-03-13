@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "ESNext",
     "removeComments": false,
     "preserveConstEnums": true,
     "moduleResolution": "node",
@@ -13,27 +13,19 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "react",
+    "jsx": "preserve",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "global.d.ts"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./src/components/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/package": ["./package.json"],
-      "@/project": ["./project.config.json"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/apis/*": ["./src/apis/*"]
-    }
+      // TS5090 leading './'
+      "~": ["src"],
+      "~/*": ["src/*"]
+    },
+    "types": ["node", "sass"]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  "include": ["./src", "./types", "./config"],
   "compileOnSave": false
 }

@@ -1,97 +1,26 @@
-<template>
-  <view class="index">
-    <view>
-      <img src="" alt="">
-    </view>
-    {{ msg }}
-    <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
-    </view>
-    <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
-    <view id="lottie">
-      <canvas ref="lottieRef" class="testCanvas" id="testCanvas" canvas-id="testCanvas" type="2d" />
-    </view>
-  </view>
-</template>
+<script setup lang="ts">
+import Taro from '@tarojs/taro';
+import { ref } from 'vue';
 
-<script lang="ts">
-import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue';
-import Lottie from '@/utils/lottie';
-import Taro, { createSelectorQuery, pxTransform } from '@tarojs/taro'
-import lottie from 'lottie-miniapp';
-// import lottie from 'lottie-miniprogram'
+const msg = ref('Hello Taro');
 
-export default defineComponent({
-  name: 'Index',
-  components: {
-    
-  },
-  setup(){
-    const lottieRef = ref();
-    const state = reactive({
-      msg: '欢迎使用 NutUI3.0 开发小程序',
-      msg2: '你成功了～',
-      type: 'text',
-      show: false,
-      cover: false
-    });
-
-    const handleClick = (type: string, msg: string, cover: boolean = false) => {
-      state.show = true;
-      state.msg2 = msg;
-      state.type = type;
-      state.cover = cover;
-      let ctxCanvas: any;
-      if (process.env.TARO_ENV === 'weapp') {
-        ctxCanvas= createSelectorQuery().select("#testCanvas")
-          .fields({ node: true, size: true })
-          .exec((res) => {
-            const canvas = res[0].node;
-            const ctx = canvas.getContext("2d");
-
-            const dpr = Taro.getSystemInfoSync().pixelRatio;
-            canvas.width = res[0].width * dpr;
-            canvas.height = res[0].height * dpr;
-            ctx.scale(dpr, dpr);
-
-            const dadd = lottie(ctx, {
-              animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-              animationData: require('../../assets/aaa.json'),
-              canvas: canvas
-            })
-
-            dadd.play()
-          });
-      } else {
-        const canvasContext: any = Taro.createCanvasContext("testCanvas");
-        console.log(canvasContext);
-
-        // 指定canvas大小
-        canvasContext.canvas = {
-          width: pxTransform(50),
-          height: pxTransform(50),
-        };
-
-        ctxCanvas = Lottie(canvasContext, {
-          animationPath: 'https://assets1.lottiefiles.com/datafiles/AembVTvov5PkTSJ/data.json',
-          animationData: require('../../assets/aaa.json'),
-        })
-      }
-      console.log(ctxCanvas);
-    };
-
-    onMounted(() => {
-    })
-
-    return {
-      lottieRef,
-      ...toRefs(state),
-      handleClick
-    }
-  }
-})
+const show = ref(false);
+function click() {
+  show.value = true;
+}
 </script>
 
-<style lang="scss">
-@import './index.scss';
-</style>
+<template>
+  <nut-cell title="打开弹窗" desc="描述文字1" @click="click" />
+  <nut-popup v-model:visible="show" closeable position="bottom" style="height: 50%"> 这里是 popup 的内容 </nut-popup>
+  <div class="bg-slate-500 text-[100px] text-[#acc855]">
+    <span>{{ msg }}</span>
+    <div class="text-3xl">1</div>
+  </div>
+  <div>
+    <!-- TODO: 按钮丢失 -->
+    <nut-button type="primary"> Primary </nut-button>
+    <nut-button type="info"> Info </nut-button>
+  </div>
+  <nut-divider dashed> 跳转 </nut-divider>
+</template>
