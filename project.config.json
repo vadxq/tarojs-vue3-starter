@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "dist/weapp/",
-  "projectname": "fe_wsd_mini",
+  "projectname": "tarojs-vue3-starter",
   "description": "n",
   "appid": "wx90909090909090909",
   "setting": {
@@ -8,8 +8,10 @@
     "es6": false,
     "enhance": false,
     "compileHotReLoad": false,
+    "skylineRenderEnable": true,
     "postcss": false,
-    "minified": false,
+    "minified": true,
+    "swc": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
