@@ -1,9 +1,8 @@
-import { ConfigProvider } from '@nutui/nutui-taro';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
 import '@nutui/touch-emulator';
-
+import LayoutPage from '~/components/layout/pageLayout.vue';
 import './app.css';
 
 const App = createApp({
@@ -14,6 +13,7 @@ const App = createApp({
 });
 
 App.use(createPinia());
-App.use(ConfigProvider);
+
+App.component('layout-page', LayoutPage);
 
 export default App;

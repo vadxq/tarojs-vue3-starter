@@ -6,15 +6,13 @@ import { defineConfig } from '@tarojs/cli';
 import type { UserConfigExport } from '@tarojs/cli';
 import tailwindcss from 'tailwindcss';
 
-// eslint-disable-next-line import/no-unresolved
 import ComponentsPlugin from 'unplugin-vue-components/vite';
 import type { Plugin } from 'vite';
-// eslint-disable-next-line import/no-unresolved
+
 import { UnifiedViteWeappTailwindcssPlugin as uvtw } from 'weapp-tailwindcss/vite';
 
-// eslint-disable-next-line import/no-unresolved
 import devConfig from './dev';
-// eslint-disable-next-line import/no-unresolved
+
 import prodConfig from './prod';
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
@@ -138,7 +136,7 @@ export default defineConfig<'vite'>(async (merge, _) => {
     },
     alias: {
       '~': path.resolve(__dirname, '..', 'src'),
-      '@': path.resolve(__dirname, '..', 'src'),
+      '~types': path.resolve(__dirname, '..', 'types'),
     },
   };
   if (process.env.NODE_ENV === 'development') {

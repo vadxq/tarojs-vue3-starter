@@ -90,6 +90,7 @@ const tsConfig = {
         varsIgnorePattern: '^_', // 允许 _ 开头的未使用变量
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 };
 

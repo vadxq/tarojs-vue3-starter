@@ -9,9 +9,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     NutButton: typeof import('@nutui/nutui-taro')['Button']
     NutCell: typeof import('@nutui/nutui-taro')['Cell']
+    NutConfigProvider: typeof import('@nutui/nutui-taro')['ConfigProvider']
     NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutPopup: typeof import('@nutui/nutui-taro')['Popup']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
+    PageLayout: typeof import('./../src/components/layout/pageLayout.vue')['default']
   }
 }

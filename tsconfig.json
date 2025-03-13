@@ -23,7 +23,7 @@
       // TS5090 leading './'
       "~": ["src"],
       "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "~/types/*": ["types/*"]
     },
     "types": ["node", "sass"]
   },

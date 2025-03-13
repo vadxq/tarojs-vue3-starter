@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/weapp/",
   "projectname": "tarojs-vue3-starter",
   "description": "n",
-  "appid": "wx90909090909090909",
+  "appid": "wx909090909090909",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -19,7 +19,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.6.4",
+  "libVersion": "3.3.5",
   "srcMiniprogramRoot": "dist/weapp/",
   "packOptions": {
     "ignore": [],
