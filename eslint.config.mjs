@@ -96,7 +96,7 @@ const tsConfig = {
 // Import 配置
 const importConfig = {
   name: 'import-config',
-  files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue'],
+  files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
   plugins: {
     import: importPlugin,
   },

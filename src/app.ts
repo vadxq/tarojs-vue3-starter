@@ -1,3 +1,4 @@
+import { ConfigProvider } from '@nutui/nutui-taro';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 
@@ -13,4 +14,6 @@ const App = createApp({
 });
 
 App.use(createPinia());
+App.use(ConfigProvider);
+
 export default App;

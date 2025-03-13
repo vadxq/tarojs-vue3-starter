@@ -138,6 +138,7 @@ export default defineConfig<'vite'>(async (merge, _) => {
     },
     alias: {
       '~': path.resolve(__dirname, '..', 'src'),
+      '@': path.resolve(__dirname, '..', 'src'),
     },
   };
   if (process.env.NODE_ENV === 'development') {
