@@ -96,13 +96,15 @@ const tsConfig = {
 // Import 配置
 const importConfig = {
   name: 'import-config',
-  files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+  files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue'],
   plugins: {
     import: importPlugin,
   },
   rules: {
     ...importPlugin.configs.recommended.rules,
     'import/order': ['error', { alphabetize: { order: 'asc' } }],
+    // 关闭路径解析校验 (由TypeScript处理)
+    'import/no-unresolved': 'off',
   },
 };
 
